@@ -1,7 +1,7 @@
 package ufo.web;
 
-import ufo.AcceptUfoChallengeService;
 import ufo.answers.UFOAnswer;
+import ufo.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,18 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/hi")
-public class UFOChallengeServlet extends HttpServlet {
+@WebServlet("/ufo02")
+public class UFO02WhoAreYouServlet  extends HttpServlet {
+    private final UFO02WhoAreYouService UFO02WhoAreYouService = new UFO02WhoAreYouService();
 
-    private final AcceptUfoChallengeService acceptUfoChallengeService = new AcceptUfoChallengeService();
-
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        doPost(req, resp);
-    }
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        UFOAnswer answer = acceptUfoChallengeService.call(Boolean.parseBoolean(req.getParameter("answer")));
+        UFOAnswer answer = UFO02WhoAreYouService.call(Boolean.parseBoolean(req.getParameter("answer")));
 
         resp.setStatus(200);
         req.setAttribute("answer", answer.getMessage());

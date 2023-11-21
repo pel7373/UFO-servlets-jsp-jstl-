@@ -1,17 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Start Page</title>
+    <title>Lose Page</title>
 </head>
 <body>
 
+<center>
+<%
+    String message = (String)request.getAttribute("answer");
+%>
+<%= message %>
 <h1>Ви програли!</h1>
-<form action="/hi" method="post">
-    <input type="radio" name="yes">Нова гра<br>
-    <input type="radio" name="no">Закінчити грати<br>
-    <input type="submit" value="Add">
+<form action="/" method="post">
+    <input type="submit" value="Почати гру заново!">
 </form>
-
+</center>
 
 </body>
 </html>
